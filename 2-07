@@ -1,0 +1,24 @@
+display.newText( "cost", display.contentCenterX, display.contentCenterY -160, native.systemFont, 30 )
+
+local answerTextField = native.newTextField( display.contentCenterX, display.contentCenterY + -120, 300, 40 )
+answerTextField.id = "answerTextField"
+
+local image = display.newImageRect( "enterButton.png", 150, 75 )
+image.x = display.contentCenterX
+image.y = 185
+image.id = "calculatebutton"
+
+display.newText( "diameter inch", display.contentCenterX, display.contentCenterY, native.systemFont, 20 )
+
+local diameterTextField = native.newTextField( display.contentCenterX, display.contentCenterY + 50, 300, 40 )
+diameterTextField.id = "diameterTextField"
+diameterTextField.inputType="number"
+
+local function calculateButtonTouch( event )
+    
+    local diameter = tonumber(diameterTextField.text)
+	local cost = 0.75 + 1 + 0.5 * diameter
+
+	answerTextField.text = tostring(cost)
+end
+image:addEventListener( "touch", calculateButtonTouch )
